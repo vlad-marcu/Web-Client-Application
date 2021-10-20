@@ -1,0 +1,36 @@
+Marcu Vlad-Vasile 324CD
+
+
+Pentru inceput, am folosit fisierele requests.h, requests.c, helpers.c, helpers.h, buffer.c si buffer.h 
+din Lab10 + parson.h si parson.c pentru folosirea fisierelor json.Functiile compute_get_request si 
+compute_post_request sunt la fel ca cele din lab, doar ca am daugat un parametru pentru tokenul JWT.
+
+Comanda register: Compunem un fisier JSON cu userul si parola si il folosim pentru comanda
+compute_post_request.Verificam daca username-ul este folosit deja.
+
+Comanda login: Compunem un fisier JSON cu userul si parola si il folosim pentru a ne loga.
+Verificam daca se potrivesc credentialele, daca da salvam si un cookie.
+
+Comanda enter_library: Folosim functia compute_get_request si cookieul pentru a demonstra ca suntem
+logati, apoi cerem acces catre library.Daca cookie-ul este inexistent sau gresit afisam eroarea.
+Altfel salvam token-ul, pentru a il folosi ulterior.
+
+Comanda get_books: Folosim functia compute_get_request si token-ul pentru a demonstra ca avem
+acces la library.Daca nu e bun token-ul afisam eroarea, altfel afisam informatiile despre cartile
+din library.
+
+Comanda get_book: Citim de la tastatura un id, si il concatenam la url.Folosim functia compute_get_request si token-ul 
+pentru a demonstra ca avem acces la library.Daca nu e bun token-ul afisam eroarea, 
+daca id-ul este gresit afisam eroarea,altfel afisam detalii despre cartea din library cu id-ul cerut.
+
+Comanda add_book: Citim de la tastatura toate detaliile cartii, si formam un JSON cu ele pentru a il
+folosi in functia compute_post_requesr, impreuna cu tokenul JWT.Daca nu e bun token-ul afisam eroarea,
+daca formatul cartii este gresit afisam eroarea.
+
+Comanda delete_book:Am scris o functie compute_delete_request, asemanatoare cu compute_get_request, in afara
+de partea cu verific area "query_param".Citim de la tastatura un id, si il concatenam la url.Folosim functia
+compute_delete_requesr si token-ul pentru a demonstra ca avem acces la library.Daca nu e bun token-ul afisam
+eroarea, daca id-ul este gresit afisam eroarea.
+
+Comanda logout: Folosim functia compute_get_request si cookieul pentru a demonstra ca suntem
+logati, apoi incercam sa de delogam.Daca cookie-ul este gresit, afisam eroarea.
